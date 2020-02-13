@@ -46,7 +46,6 @@ object GLInit {
             glfwTerminate()
             throw new IllegalStateException("Failed creating a GLFW window")
         }
-        GL.createCapabilities()
 
         (errorCallback, window)
     }

@@ -7,6 +7,7 @@ import org.lwjgl.glfw.GLFW.glfwPollEvents
 import org.lwjgl.glfw.GLFW.glfwSwapBuffers
 import org.lwjgl.glfw.GLFW.glfwSetKeyCallback
 import org.lwjgl.glfw.GLFW.glfwMakeContextCurrent
+import org.lwjgl.opengl.GL
 
 object MainLoop {
     
@@ -18,6 +19,7 @@ object MainLoop {
         this.callback = callback
         glfwSetKeyCallback(window, callback)
         glfwMakeContextCurrent(window)
+        GL.createCapabilities()
     }
 
     def enterLoop(): Unit = {
