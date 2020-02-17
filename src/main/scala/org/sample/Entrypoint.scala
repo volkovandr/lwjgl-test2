@@ -10,8 +10,16 @@ object Entrypoint extends App {
 
     println("Strarted...")
     
-    MainLoop.enterLoop()
-    GLInit.tearDown(window, callback, errorCallback)
+    try {
+        MainLoop.enterLoop()
+    } catch {
+        case ex: Throwable => 
+            println(s"Exception in the main loop: ${ex.getMessage()}")
+            ex.printStackTrace()
+    } finally {
+        MainLoop.cleanup()
+        GLInit.tearDown(window, callback, errorCallback)
+    }
     
     println("Terminated...")
 }
